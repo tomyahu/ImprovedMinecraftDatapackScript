@@ -1,3 +1,5 @@
+import sys
+
 from CommandList import CommandList
 from command_handlers.DivCommand import DivCommand
 from command_handlers.IfCommand import IfCommand
@@ -20,7 +22,8 @@ my_commands["op"] = OpCommand
 my_commands["if"] = IfCommand
 my_commands["ifnot"] = IfNotCommand
 
-file_path = "example.imcfunction"
+file_path = sys.argv[1]
+export_path = sys.argv[2]
 
 file = open(file_path)
 
@@ -39,4 +42,8 @@ while not command_list.is_finished():
 
     command_list.advance_line()
 
-print(new_string)
+file.close()
+
+export_file = open(export_path, "w")
+export_file.write(new_string)
+export_file.close()
