@@ -28,12 +28,18 @@ op a += b
 #		if <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
 #		...
 #		end
+#		ifnot <variable_name> <bool_operator> <variable_name>
+#		...
+#		end
+#		ifnot <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
+#		...
+#		end
 # Boolean Operations: < | > | = | <= | >=
 #		Less Than: 			<
 #		More Than: 			>
 #		Equal to: 			=
 #		Less or Equal to:	<=
 #		More or Equal to:	>=
-ifnot a < b
+if a < b
 time set day
 end

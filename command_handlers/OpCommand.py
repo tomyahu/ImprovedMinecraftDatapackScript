@@ -3,6 +3,9 @@ from command_handlers.Command import Command
 
 
 class OpCommand(Command):
+    """
+    Command for operating the variables with numbers or other variables
+    """
 
     def __init__(self, file, args):
         Command.__init__(self, file, "var")
@@ -12,9 +15,16 @@ class OpCommand(Command):
 
     def parse(self):
         """
-        Parses the command and its arguments to an expression
-        """
+        Parses the command.
 
+        Checks if the second variable is a number, if so it allocates the value in an auxiliary variable, operates it
+        with the first variable and saves the result in the first variable.
+
+        Otherwise it just operates the first variable with the second variable and saves the result in the first
+        variable.
+
+        :return: <str> the translation of the command
+        """
         try:
             int(self.value)
 

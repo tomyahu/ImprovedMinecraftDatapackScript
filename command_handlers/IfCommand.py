@@ -4,6 +4,9 @@ from command_handlers.Command import Command
 
 
 class IfCommand(Command):
+    """
+    A command for parsing if statements
+    """
 
     def __init__(self, file, args):
         Command.__init__(self, file, "if")
@@ -15,7 +18,10 @@ class IfCommand(Command):
 
     def parse(self):
         """
-        Parses the command and its arguments to an expression
+        Parses the command.
+
+        Translates the condition to a string that is then appended to the parsed values of every instruction inside the
+        if statement. Then returns the result.
         """
         prev_string = "execute " + self.execute_mod + " score " + var_player + " " + self.var1 + " " + self.operation + " " + var_player + " " + self.var2 + " run "
 
