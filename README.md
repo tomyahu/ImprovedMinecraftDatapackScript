@@ -10,7 +10,7 @@ makes it easier to work with variables.
 ## How do I use this?
 
 You can write your files using the syntax we created and
-translate them to the default minecraft datapack language
+translate them to the vanilla minecraft datapack language
 by running:
 
 ```

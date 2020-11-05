@@ -1,5 +1,4 @@
 import sys
-
 from CommandList import CommandList
 from command_handlers.DivCommand import DivCommand
 from command_handlers.IfCommand import IfCommand
@@ -12,6 +11,7 @@ from command_handlers.VarCommand import VarCommand
 from command_handlers.IfNotCommand import IfNotCommand
 from commands import my_commands
 
+# Sets the new commands to the respective handlers
 my_commands["var"] = VarCommand
 my_commands["+="] = AddCommand
 my_commands["-="] = SubCommand
@@ -22,13 +22,16 @@ my_commands["op"] = OpCommand
 my_commands["if"] = IfCommand
 my_commands["ifnot"] = IfNotCommand
 
+# Obtains file and export path
 file_path = sys.argv[1]
 export_path = sys.argv[2]
 
-file = open(file_path)
 
+# Opens the file and gets the commands
+file = open(file_path)
 command_list = CommandList(file)
 
+# Translates the commands to the vanilla datapack language
 new_string = ""
 while not command_list.is_finished():
     command = command_list.get_current_line()
@@ -44,6 +47,7 @@ while not command_list.is_finished():
 
 file.close()
 
+# Exports new file
 export_file = open(export_path, "w")
 export_file.write(new_string)
 export_file.close()
