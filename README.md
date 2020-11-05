@@ -3,6 +3,22 @@
 An extension for the minecraft datapack script language that
 makes it easier to work with variables.
 
+## Requirements
+
+* Python 3
+
+## How do I use this?
+
+You can write your files using the syntax we created and
+translate them to the default minecraft datapack language
+by running:
+
+```
+$ main.py <path_to_your_file> <export_path>
+```
+
+This will create a file in `<export_path>` with the code translated.
+
 ## Features
 ### Variable definition and operation
 
