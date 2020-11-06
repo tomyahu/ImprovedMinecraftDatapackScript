@@ -48,7 +48,7 @@ Ok you may really like this:
 ```
 if a < b
 time set day
-end
+endif
 ```
 
 You can put any minecraft command you like inside the if
