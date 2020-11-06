@@ -1,5 +1,5 @@
 from commands import my_commands
-from consts import var_player
+from consts import var_player, export_path, current_path
 from command_handlers.Command import Command
 
 
@@ -32,7 +32,7 @@ class IfCommand(Command):
             command = self.file.get_current_line()
 
             args = command.replace("\t", "").split(" ")
-            current_command = args[0]
+            current_command = args[0].replace("\n", "")
 
             if current_command == "end":
                 break
