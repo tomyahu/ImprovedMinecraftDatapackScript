@@ -1,7 +1,7 @@
 import os
 import sys
-import zipfile
-from shutil import copyfile, copytree, rmtree
+import consts
+from shutil import copyfile, copytree, rmtree, make_archive
 from CommandList import CommandList
 from command_handlers.DivCommand import DivCommand
 from command_handlers.IfCommand import IfCommand
@@ -28,17 +28,18 @@ my_commands["ifnot"] = IfNotCommand
 # Obtains file and export path
 file_path = sys.argv[1]
 export_path = file_path + "_out"
-
-def zipdir(path, ziph):
-    # ziph is zipfile handle
-    for root, dirs, files in os.walk(path):
-        for file in files:
-            ziph.write(os.path.join(root, file))
+consts.export_path = export_path
 
 
+# copy_file: str -> None
+# copies a file as is from the datapack developed to the export file
 def copy_file(extra_path):
     copyfile(file_path + extra_path, export_path + extra_path)
 
+
+# translate_datapack_dir: str -> None
+# copies all directories in that are not functions from the datapack module to the export. Then it translates all
+# .mcfunction files to the vanilla script.
 def translate_datapack_dir(extra_path):
     all_inside_dirs = [f for f in os.listdir(file_path + extra_path)]
 
@@ -53,6 +54,8 @@ def translate_datapack_dir(extra_path):
             translate_all_files_in_dir(extra_path + "/" + dir)
 
 
+# translate_all_files_in_dir: str -> None
+# translates all files in a directory and saves the result in the export path.
 def translate_all_files_in_dir(extra_path):
     all_inside_dirs = [f for f in os.listdir(file_path + extra_path)]
     for dir in all_inside_dirs:
@@ -62,13 +65,19 @@ def translate_all_files_in_dir(extra_path):
             translate_all_files_in_dir(extra_path + "/" + dir)
 
 
+# copy_dir: str -> None
+# copies a directory with all its files as they are to the export file.
 def copy_dir(extra_path):
     copytree(file_path + extra_path, export_path + extra_path)
 
 
+# translate_file: str -> None
+# translates a single file and saves its translation in the export file.
 def translate_file(file_to_translate_path):
     file = open(file_path + file_to_translate_path)
     command_list = CommandList(file)
+
+    consts.current_path = file_to_translate_path
 
     # Translates the commands to the vanilla datapack language
     new_string = ""
@@ -91,6 +100,10 @@ def translate_file(file_to_translate_path):
     export_file.write(new_string)
     export_file.close()
 
+
+########################################################################################################################
+########################################################################################################################
+########################################################################################################################
 # Make export directory
 try:
     os.mkdir(export_path)
@@ -105,7 +118,7 @@ for dir in all_inside_dirs:
 # Create data directory
 os.mkdir(export_path + "/data")
 
-
+# Translates the datapack
 all_dirs_inside_data = [f for f in os.listdir(file_path + "/data")]
 for dir in all_dirs_inside_data:
     if os.path.isfile(file_path + "/data/" + dir):
@@ -114,8 +127,8 @@ for dir in all_dirs_inside_data:
         os.mkdir(export_path + "/data/" + dir)
         translate_datapack_dir("/data/" + dir)
 
-zipf = zipfile.ZipFile(export_path + '.zip', 'w', zipfile.ZIP_DEFLATED)
-zipdir(export_path + "/", zipf)
-zipf.close()
+# Zips the result
+make_archive(export_path, 'zip', export_path)
 
+# Deletes temporary directory
 rmtree(export_path)
