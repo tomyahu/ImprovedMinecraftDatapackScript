@@ -9,15 +9,16 @@ makes it easier to work with variables.
 
 ## How do I use this?
 
-You can write your files using the syntax we created and
-translate them to the vanilla minecraft datapack language
+You can write your datapack using the syntax we created and
 by running:
 
 ```
-$ main.py <path_to_your_file> <export_path>
+$ main.py <path_to_your_file>
 ```
 
-This will create a file in `<export_path>` with the code translated.
+The software will translate the datapack to the vanilla
+minecraft language and save it in a zip named
+`<path_to_your_file>_out.zip`.
 
 ## Features
 ### Variable definition and operation
@@ -47,7 +48,7 @@ Ok you may really like this:
 ```
 if a < b
 time set day
-end
+endif
 ```
 
 You can put any minecraft command you like inside the if

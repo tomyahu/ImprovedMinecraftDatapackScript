@@ -24,16 +24,16 @@ op a += b
 #	Syntax
 #		if <variable_name> <bool_operator> <variable_name>
 #		...
-#		end
+#		endif
 #		if <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
 #		...
-#		end
+#		endif
 #		ifnot <variable_name> <bool_operator> <variable_name>
 #		...
-#		end
+#		endif
 #		ifnot <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
 #		...
-#		end
+#		endif
 # Boolean Operations: < | > | = | <= | >=
 #		Less Than: 			<
 #		More Than: 			>
@@ -42,4 +42,4 @@ op a += b
 #		More or Equal to:	>=
 if a < b
 time set day
-end
+endif
