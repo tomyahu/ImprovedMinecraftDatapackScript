@@ -93,8 +93,7 @@ class MainWindow(QWidget):
 
     def translate_datapack_aux(self):
         """
-        TODO: Document this
-        :return:
+        Translates the whole datapack to the vanilla datapack language and exports it as a zip.
         """
         # Make export directory
         try:
@@ -125,12 +124,10 @@ class MainWindow(QWidget):
         # Deletes temporary directory
         #rmtree(self.export_path)
 
-    #TODO: Document methods
     def copy_file(self, extra_path):
         """
         copies a file as is from the datapack developed to the export file
-        :param extra_path:
-        :return:
+        :param extra_path: <str> the appendix of the path to copy the file
         """
         copyfile(self.import_path + extra_path, self.export_path + extra_path)
 
@@ -138,8 +135,7 @@ class MainWindow(QWidget):
         """
         copies all directories in that are not functions from the datapack module to the export. Then it translates all
         .mcfunction files to the vanilla script.
-        :param extra_path:
-        :return:
+        :param extra_path: the appendix of the path to translate the directory
         """
         all_inside_dirs = [f for f in os.listdir(self.import_path + extra_path)]
 
@@ -156,8 +152,7 @@ class MainWindow(QWidget):
     def translate_all_files_in_dir(self, extra_path):
         """
         translates all files in a directory and saves the result in the export path.
-        :param extra_path:
-        :return:
+        :param extra_path: <str> the appendix of the path to translate all files in
         """
         all_inside_dirs = [f for f in os.listdir(self.import_path + extra_path)]
         for dir in all_inside_dirs:
@@ -171,16 +166,14 @@ class MainWindow(QWidget):
     def copy_dir(self, extra_path):
         """
         copies a directory with all its files as they are to the export file.
-        :param extra_path:
-        :return:
+        :param extra_path: <str> the appendix of the path to copy the directory
         """
         copytree(self.import_path + extra_path, self.export_path + extra_path)
 
     def translate_file(self, file_to_translate_path):
         """
         translates a single file and saves its translation in the export file.
-        :param file_to_translate_path:
-        :return:
+        :param file_to_translate_path: <str> the path of the file to translate and copy
         """
         file = open(self.import_path + file_to_translate_path)
         command_list = CommandList(file)
