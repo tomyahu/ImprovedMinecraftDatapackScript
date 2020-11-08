@@ -13,6 +13,7 @@ from command_handlers.AddCommand import AddCommand
 from command_handlers.VarCommand import VarCommand
 from command_handlers.IfNotCommand import IfNotCommand
 from command_handlers.WhileCommand import WhileCommand
+from command_handlers.WhileNotCommand import WhileNotCommand
 from commands import my_commands
 
 # Sets the new commands to the respective handlers
@@ -26,6 +27,7 @@ my_commands["op"] = OpCommand
 my_commands["if"] = IfCommand
 my_commands["ifnot"] = IfNotCommand
 my_commands["while"] = WhileCommand
+my_commands["whilenot"] = WhileNotCommand
 
 # Obtains file and export path
 file_path = sys.argv[1]

@@ -7,5 +7,6 @@ class WhileNotCommand(WhileCommand):
     """
 
     def __init__(self, file, args):
-        WhileCommand.__init__(self, file, "whilenot")
+        WhileCommand.__init__(self, file, args)
         self.execute_mod = "unless"
+        self.command_str = "whilenot"

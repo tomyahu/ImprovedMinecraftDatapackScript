@@ -30,6 +30,7 @@ class WhileCommand(Command):
 
         new_string = ""
         current_command = self.command_str
+
         while_counter = 0
         while current_command != ("end" + self.command_str):
             self.file.advance_line()
