@@ -43,11 +43,11 @@ op a += b
 
 ### If statements
 
-Ok you may really like this:
+If statements syntax is as follows:
 
 ```
 if a < b
-time set day
+	time set day
 endif
 ```
 
@@ -55,9 +55,25 @@ You can put any minecraft command you like inside the if
 statement and all of them will be executed only if the
 condition is satisfied.
 
-## Features Planned
-* For and While loops
-* Functions with arguments
+### While statements
 
-Check the example.imcfunction file to check how all the
+While statements work the same as ifs. You put the
+boolean experssion in the first line and you end
+them with `endwhile`:
+
+```
+while a < b
+	time set day
+endwhile
+```
+
+# Future plans
+Currently I'm working on an executable version so it is
+easy to use it.
+
+There are no more future plans for this repository. If there's
+interest I may continue to develop it, but for now I'm
+happy with how it turned out!
+
+Check the example.mcfunction file to check how all the
 new commands work and all the operations that exist.

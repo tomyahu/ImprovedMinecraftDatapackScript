@@ -22,18 +22,18 @@ op a += b
 
 # If
 #	Syntax
-#		if <variable_name> <bool_operator> <variable_name>
+#		if <variable_name> <bool_operator> <variable_name/number>
 #		...
 #		endif
 #		if <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
 #		...
 #		endif
-#		ifnot <variable_name> <bool_operator> <variable_name>
+#		ifnot <variable_name> <bool_operator> <variable_name/number>
 #		...
-#		endif
+#		endifnot
 #		ifnot <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
 #		...
-#		endif
+#		endifnot
 # Boolean Operations: < | > | = | <= | >=
 #		Less Than: 			<
 #		More Than: 			>
@@ -43,3 +43,21 @@ op a += b
 if a < b
 time set day
 endif
+
+# While
+#	Syntax
+#		while <variable_name> <bool_operator> <variable_name/number>
+#		...
+#		endwhile
+#		while <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
+#		...
+#		endwhile
+#		whilenot <variable_name> <bool_operator> <variable_name/number>
+#		...
+#		endwhilenot
+#		whilenot <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
+#		...
+#		endwhilenot
+while a < b
+time set day
+endwhile

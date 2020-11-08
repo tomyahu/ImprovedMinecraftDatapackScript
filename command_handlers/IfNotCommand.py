@@ -7,5 +7,6 @@ class IfNotCommand(IfCommand):
     """
 
     def __init__(self, file, args):
-        IfCommand.__init__(self, file, "ifnot")
+        IfCommand.__init__(self, file, args)
         self.execute_mod = "unless"
+        self.command_str = "ifnot"

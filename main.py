@@ -12,6 +12,8 @@ from command_handlers.SubCommand import SubCommand
 from command_handlers.AddCommand import AddCommand
 from command_handlers.VarCommand import VarCommand
 from command_handlers.IfNotCommand import IfNotCommand
+from command_handlers.WhileCommand import WhileCommand
+from command_handlers.WhileNotCommand import WhileNotCommand
 from commands import my_commands
 
 # Sets the new commands to the respective handlers
@@ -24,6 +26,8 @@ my_commands["%="] = ModCommand
 my_commands["op"] = OpCommand
 my_commands["if"] = IfCommand
 my_commands["ifnot"] = IfNotCommand
+my_commands["while"] = WhileCommand
+my_commands["whilenot"] = WhileNotCommand
 
 # Obtains file and export path
 file_path = sys.argv[1]
@@ -60,7 +64,9 @@ def translate_all_files_in_dir(extra_path):
     all_inside_dirs = [f for f in os.listdir(file_path + extra_path)]
     for dir in all_inside_dirs:
         if os.path.isfile(file_path + extra_path + "/" + dir):
-            translate_file(extra_path + "/" + dir)
+            file_extension = dir.split(".")[-1]
+            if file_extension == "mcfunction":
+                translate_file(extra_path + "/" + dir)
         else:
             translate_all_files_in_dir(extra_path + "/" + dir)
 
@@ -131,4 +137,4 @@ for dir in all_dirs_inside_data:
 make_archive(export_path, 'zip', export_path)
 
 # Deletes temporary directory
-rmtree(export_path)
+#rmtree(export_path)
