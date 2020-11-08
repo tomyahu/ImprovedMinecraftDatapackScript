@@ -22,13 +22,13 @@ op a += b
 
 # If
 #	Syntax
-#		if <variable_name> <bool_operator> <variable_name>
+#		if <variable_name> <bool_operator> <variable_name/number>
 #		...
 #		endif
 #		if <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
 #		...
 #		endif
-#		ifnot <variable_name> <bool_operator> <variable_name>
+#		ifnot <variable_name> <bool_operator> <variable_name/number>
 #		...
 #		endifnot
 #		ifnot <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
@@ -46,13 +46,13 @@ endif
 
 # While
 #	Syntax
-#		while <variable_name> <bool_operator> <variable_name>
+#		while <variable_name> <bool_operator> <variable_name/number>
 #		...
 #		endwhile
 #		while <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
 #		...
 #		endwhile
-#		whilenot <variable_name> <bool_operator> <variable_name>
+#		whilenot <variable_name> <bool_operator> <variable_name/number>
 #		...
 #		endwhilenot
 #		whilenot <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
