@@ -122,7 +122,7 @@ class MainWindow(QWidget):
         make_archive(self.export_path, 'zip', self.export_path)
 
         # Deletes temporary directory
-        #rmtree(self.export_path)
+        rmtree(self.export_path)
 
     def copy_file(self, extra_path):
         """
