@@ -15,7 +15,7 @@ class IfCommand(Command):
         Command.__init__(self, file, "if")
         self.var1 = "var." + args[1]
         self.operation = args[2]
-        self.var2 = "var." + args[3].replace("\n", "")
+        self.var2 = args[3].replace("\n", "")
 
         self.execute_mod = "if"
 
@@ -27,7 +27,14 @@ class IfCommand(Command):
         if statement. Then returns the result.
         """
 
-        prev_string = "execute " + self.execute_mod + " score " + var_player + " " + self.var1 + " " + self.operation + " " + var_player + " " + self.var2 + " run "
+
+        try:
+            int(self.var2)
+            prev_string = "scoreboard objectives add " + consts.aux_variable_name + " dummy\n"
+            prev_string += "scoreboard players set " + var_player + " " + consts.aux_variable_name + " " + self.var2 + "\n"
+            prev_string += "execute " + self.execute_mod + " score " + var_player + " " + self.var1 + " " + self.operation + " " + var_player + " " + consts.aux_variable_name + " run "
+        except:
+            prev_string = "execute " + self.execute_mod + " score " + var_player + " " + self.var1 + " " + self.operation + " " + var_player + " var." + self.var2 + " run "
 
         new_string = ""
         current_command = self.command_str
