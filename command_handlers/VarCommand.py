@@ -1,4 +1,4 @@
-from consts import var_player
+import consts
 from command_handlers.Command import Command
 
 
@@ -19,6 +19,6 @@ class VarCommand(Command):
         :return: <str> the translation of the command
         """
         memory_allocation = "scoreboard objectives add " + self.name + " dummy\n"
-        variable_initialization = "scoreboard players set " + var_player + " " + self.name + " " + self.value
+        variable_initialization = "scoreboard players set " + consts.var_player + " " + self.name + " " + self.value
 
         return memory_allocation + variable_initialization

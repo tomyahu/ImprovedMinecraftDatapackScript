@@ -1,4 +1,4 @@
-from consts import var_player, aux_variable_name
+import consts
 from command_handlers.Command import Command
 
 
@@ -28,10 +28,10 @@ class OpCommand(Command):
         try:
             int(self.value)
 
-            memory_allocation = "scoreboard objectives add " + aux_variable_name + " dummy\n"
-            variable_initialization = "scoreboard players set " + var_player + " " + aux_variable_name + " " + self.value
-            variable_update = "scoreboard players operation " + var_player + " " + self.name + " " + self.operator + " " + var_player + " " + aux_variable_name + "\n"
+            memory_allocation = "scoreboard objectives add " + consts.aux_variable_name + " dummy\n"
+            variable_initialization = "scoreboard players set " + consts.var_player + " " + consts.aux_variable_name + " " + self.value
+            variable_update = "scoreboard players operation " + consts.var_player + " " + self.name + " " + self.operator + " " + consts.var_player + " " + consts.aux_variable_name + "\n"
 
             return memory_allocation + variable_initialization + variable_update
         except:
-            return "scoreboard players operation " + var_player + " " + self.name + " " + self.operator + " " + self.name + " " + self.value
+            return "scoreboard players operation " + consts.var_player + " " + self.name + " " + self.operator + " " + self.name + " " + self.value

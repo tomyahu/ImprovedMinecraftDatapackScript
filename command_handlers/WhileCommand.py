@@ -1,7 +1,6 @@
 import os
 
 from commands import my_commands
-from consts import var_player
 import consts
 from command_handlers.Command import Command
 
@@ -29,10 +28,10 @@ class WhileCommand(Command):
         try:
             int(self.var2)
             prev_string = "scoreboard objectives add " + consts.aux_variable_name + " dummy\n"
-            prev_string += "scoreboard players set " + var_player + " " + consts.aux_variable_name + " " + self.var2 + "\n"
-            prev_string += "execute " + self.execute_mod + " score " + var_player + " " + self.var1 + " " + self.operation + " " + var_player + " " + consts.aux_variable_name + " run "
+            prev_string += "scoreboard players set " + consts.var_player + " " + consts.aux_variable_name + " " + self.var2 + "\n"
+            prev_string += "execute " + self.execute_mod + " score " + consts.var_player + " " + self.var1 + " " + self.operation + " " + consts.var_player + " " + consts.aux_variable_name + " run "
         except:
-            prev_string = "execute " + self.execute_mod + " score " + var_player + " " + self.var1 + " " + self.operation + " " + var_player + " var." + self.var2 + " run "
+            prev_string = "execute " + self.execute_mod + " score " + consts.var_player + " " + self.var1 + " " + self.operation + " " + consts.var_player + " var." + self.var2 + " run "
 
         new_string = ""
         current_command = self.command_str
