@@ -43,3 +43,12 @@ op a += b
 if a < b
 time set day
 endif
+
+# While
+#	Syntax
+#		while <variable_name> <bool_operator> <variable_name>
+#		...
+#		endwhile
+while a < b
+time set day
+endwhile
