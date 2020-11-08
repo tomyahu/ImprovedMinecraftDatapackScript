@@ -67,8 +67,13 @@ while a < b
 endwhile
 ```
 
-## Features Planned
-* Functions with arguments
+# Future plans
+Currently I'm working on an executable version so it is
+easy to use it.
 
-Check the example.imcfunction file to check how all the
+There are no more future plans for this repository. If there's
+interest I may continue to develop it, but for now I'm
+happy with how it turned out!
+
+Check the example.mcfunction file to check how all the
 new commands work and all the operations that exist.
