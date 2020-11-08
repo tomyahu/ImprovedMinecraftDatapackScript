@@ -135,4 +135,4 @@ for dir in all_dirs_inside_data:
 make_archive(export_path, 'zip', export_path)
 
 # Deletes temporary directory
-rmtree(export_path)
+#rmtree(export_path)

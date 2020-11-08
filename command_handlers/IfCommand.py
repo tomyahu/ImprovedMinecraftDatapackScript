@@ -26,19 +26,20 @@ class IfCommand(Command):
         Translates the condition to a string that is then appended to the parsed values of every instruction inside the
         if statement. Then returns the result.
         """
+
         prev_string = "execute " + self.execute_mod + " score " + var_player + " " + self.var1 + " " + self.operation + " " + var_player + " " + self.var2 + " run "
 
         new_string = ""
-        current_command = "if"
+        current_command = self.command_str
         if_counter = 0
-        while current_command != "endif":
+        while current_command != ("end" + self.command_str):
             self.file.advance_line()
             command = self.file.get_current_line()
 
             args = command.replace("\t", "").split(" ")
             current_command = args[0].replace("\n", "")
 
-            if current_command == "endif":
+            if current_command == ("end" + self.command_str):
                 if if_counter > 0:
                     if_counter -= 1
                 else:
@@ -49,7 +50,7 @@ class IfCommand(Command):
                 else:
                     new_string += command
 
-                if current_command == "if":
+                if current_command == self.command_str:
                     if_counter += 1
 
         splitted_commands = new_string.split("\n")

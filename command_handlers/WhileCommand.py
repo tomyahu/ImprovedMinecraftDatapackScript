@@ -8,7 +8,7 @@ from command_handlers.Command import Command
 
 class WhileCommand(Command):
     """
-    A command for parsing if statements
+    A command for parsing while statements
     """
 
     def __init__(self, file, args):
@@ -24,21 +24,21 @@ class WhileCommand(Command):
         Parses the command.
 
         Translates the condition to a string that is then appended to the parsed values of every instruction inside the
-        if statement. Then returns the result.
+        while statement. Then returns the result.
         """
         prev_string = "execute " + self.execute_mod + " score " + var_player + " " + self.var1 + " " + self.operation + " " + var_player + " " + self.var2 + " run "
 
         new_string = ""
-        current_command = "while"
+        current_command = self.command_str
         while_counter = 0
-        while current_command != "endwhile":
+        while current_command != ("end" + self.command_str):
             self.file.advance_line()
             command = self.file.get_current_line()
 
             args = command.replace("\t", "").split(" ")
             current_command = args[0].replace("\n", "")
 
-            if current_command == "endwhile":
+            if current_command == ("end" + self.command_str):
                 if while_counter > 0:
                     while_counter -= 1
                 else:
@@ -49,7 +49,7 @@ class WhileCommand(Command):
                 else:
                     new_string += command
 
-                if current_command == "while":
+                if current_command == self.command_str:
                     while_counter += 1
 
         splitted_commands = new_string.split("\n")

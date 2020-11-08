@@ -30,10 +30,10 @@ op a += b
 #		endif
 #		ifnot <variable_name> <bool_operator> <variable_name>
 #		...
-#		endif
+#		endifnot
 #		ifnot <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
 #		...
-#		endif
+#		endifnot
 # Boolean Operations: < | > | = | <= | >=
 #		Less Than: 			<
 #		More Than: 			>
@@ -49,6 +49,15 @@ endif
 #		while <variable_name> <bool_operator> <variable_name>
 #		...
 #		endwhile
+#		while <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
+#		...
+#		endwhile
+#		whilenot <variable_name> <bool_operator> <variable_name>
+#		...
+#		endwhilenot
+#		whilenot <variable_name> matches <number/range(1, 1.., ..1, 1..2)>
+#		...
+#		endwhilenot
 while a < b
 time set day
 endwhile
