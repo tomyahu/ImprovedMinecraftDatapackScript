@@ -61,38 +61,27 @@ class IfCommand(Command):
 
         splitted_commands = new_string.split("\n")
 
-        if len(splitted_commands) == 2:
-            final_result = ""
-            for command in splitted_commands:
-                if command.replace(" ", "") != "":
-                    final_result += prev_string + command + "\n"
+        aux_dir_path = (consts.export_path + consts.current_path).replace(".mcfunction", "_aux_dir")
+        try:
+            os.mkdir(aux_dir_path)
+        except:
+            pass
 
-            return final_result
-        elif len(splitted_commands) > 2:
-            aux_dir_path = (consts.export_path + consts.current_path).replace(".mcfunction", "_aux_dir")
-            try:
-                os.mkdir(aux_dir_path)
-            except:
-                pass
+        aux_files = [f for f in os.listdir(aux_dir_path)]
 
-            aux_files = [f for f in os.listdir(aux_dir_path)]
-
-            i = len(aux_files)
+        i = len(aux_files)
+        aux_file_name = aux_dir_path + "/" + str(i) + ".mcfunction"
+        while aux_file_name in aux_files:
+            i += 1
             aux_file_name = aux_dir_path + "/" + str(i) + ".mcfunction"
-            while aux_file_name in aux_files:
-                i += 1
-                aux_file_name = aux_dir_path + "/" + str(i) + ".mcfunction"
 
-            file = open(aux_file_name, "w")
+        file = open(aux_file_name, "w")
 
-            for command in splitted_commands:
-                file.write(command + "\n")
-            file.close()
+        for command in splitted_commands:
+            file.write(command + "\n")
+        file.close()
 
-            function_dir = consts.current_path.replace("/data/", "", 1).replace("/functions/", ":", 1).replace(".mcfunction", "_aux_dir")
-            function_dir += "/" + str(i) + ".mcfunction"
-            return prev_string + "function " + function_dir
-
-
-
-        return ""
+        function_dir = consts.current_path.replace("/data/", "", 1).replace("/functions/", ":", 1).replace(
+            ".mcfunction", "_aux_dir")
+        function_dir += "/" + str(i) + ".mcfunction"
+        return prev_string + "function " + function_dir
