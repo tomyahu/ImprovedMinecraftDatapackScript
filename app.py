@@ -89,7 +89,10 @@ class MainWindow(QWidget):
         consts.var_player = self.memory_player_text.text()
         consts.aux_variable_name = self.var_prefix_text.text()
 
-        self.translate_datapack_aux()
+        try:
+            self.translate_datapack_aux()
+        except Exception as e:
+            print(e)
 
     def translate_datapack_aux(self):
         """
@@ -161,6 +164,7 @@ class MainWindow(QWidget):
                 if file_extension == "mcfunction":
                     self.translate_file(extra_path + "/" + dir)
             else:
+                os.mkdir(self.export_path + extra_path + "/" + dir)
                 self.translate_all_files_in_dir(extra_path + "/" + dir)
 
     def copy_dir(self, extra_path):
